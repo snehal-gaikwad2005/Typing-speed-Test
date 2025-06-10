@@ -1,0 +1,267 @@
+/* Basic Reset & Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: rgb(235, 217, 217); /* Dark background */
+    color: #f8f9fc; /* Light text */
+    overflow-y: auto; /* Allow scrolling if content is too tall */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.cont-wrapper {
+    position: relative;
+    width: 90%; /* Responsive width */
+    max-width: 800px; /* Max width for larger screens */
+    margin: 50px auto; /* Centered with top/bottom margin */
+    border: 1px solid #4b5263; /* Slightly visible border */
+    padding-top: 50px; /* Space for the overlay image */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    background-color: #3e4451; /* Match container background */
+}
+
+/* IMAGE STYLING: */
+.overlay-img {
+    position: absolute;
+    top: -50px; /* Half of its height above the wrapper */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+    z-index: 1; /* Ensures it sits above other content */
+    border-radius: 50%; /* Makes the image round */
+    border: 3px solid white; /* White border around the image */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Softer shadow */
+    object-fit: cover; /* Ensures image covers the area without distortion */
+}
+
+/* Container for the game */
+.container {
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%; /* Take full width of parent wrapper */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+h1 {
+    color:  #e6c07b; /* Blue title */
+    margin-bottom: 20px;
+    font-size: 2.5em; /* Larger title */
+}
+
+/* Words Display Area */
+.words-display {
+    background-color: #21252b;
+    border: 1px solid #4b5263;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 1.2em; /* Large font for words */
+    line-height: 1.6;
+    height: 150px; /* Fixed height for consistency */
+    overflow: hidden; /* Hide overflowing words */
+    text-align: left; /* Align words to the left */
+    word-break: break-word; /* Allow words to break if too long */
+    position: relative; /* For cursor positioning */
+}
+
+.word {
+    display: inline-block; /* Make words flow like text */
+    margin-right: 8px; /* Space between words */
+    white-space: nowrap; /* Prevent words from breaking in the middle */
+}
+
+.correct {
+    color: #98c379; /* Green for correct characters */
+}
+
+.incorrect {
+    color: #e06c75; /* Red for incorrect characters */
+    text-decoration: underline; /* Underline incorrect words */
+}
+
+.current {
+    background-color: #568af2; /* Highlight current word background */
+    color: #fff; /* White text for current word */
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.cursor {
+    background-color: #e481df; /* Purple cursor */
+    display: inline-block;
+    width: 2px;
+    height: 1.2em; /* Adjust height based on font size */
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom; /* Align cursor with text baseline */
+    margin-left: 1px; /* Small gap from the character */
+}
+
+@keyframes blink {
+    from, to { background-color: transparent; }
+    50% { background-color: #c678dd; }
+}
+
+/* Typing Input Field */
+.typing-input {
+    width: calc(100% - 40px); /* Full width minus padding */
+    padding: 15px 20px;
+    font-size: 1.5em;
+    border: 2px solid #61afef;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    outline: none;
+    background-color: #21252b;
+    color: #fcfdff;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+.typing-input:focus {
+    border-color: #c678dd; /* Purple border on focus */
+}
+
+/* Stats Display */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Allow stats to wrap on smaller screens */
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.stats p {
+    margin: 5px 10px; /* Adjust margin for spacing */
+}
+
+.stats span {
+    font-weight: bold;
+    color: #ecef58; /* Yellow for stats values */
+}
+
+/* Restart Button */
+.restart-btn {
+    background-color: #61afef;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.restart-btn:hover {
+    background-color: #528cbe;
+    transform: translateY(-2px);
+}
+
+.restart-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .words-display {
+        font-size: 1.5em;
+        height: 120px;
+        padding: 15px;
+    }
+
+    .typing-input {
+        font-size: 1.2em;
+        padding: 12px 15px;
+    }
+
+    .stats {
+        font-size: 1em;
+        justify-content: center; /* Center stats on smaller screens */
+    }
+
+    .stats p {
+        margin: 5px 8px; /* Slightly less margin */
+    }
+
+    .restart-btn {
+        font-size: 1.1em;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cont-wrapper {
+        width: 95%; /* Even wider on very small screens */
+        margin: 30px auto; /* Adjust margin */
+        padding-top: 40px;
+    }
+
+    .overlay-img {
+        width: 80px;
+        height: 80px;
+        top: -40px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .words-display {
+        font-size: 1.2em;
+        height: 100px;
+        padding: 10px;
+    }
+
+    .word {
+        margin-right: 6px;
+    }
+
+    .typing-input {
+        font-size: 1em;
+        padding: 10px;
+        width: calc(100% - 20px); /* Adjust for smaller padding */
+    }
+
+    .stats {
+        flex-direction: column; /* Stack stats vertically */
+        align-items: center;
+        font-size: 0.9em;
+    }
+
+    .stats p {
+        margin: 3px 0;
+    }
+
+    .restart-btn {
+        font-size: 1em;
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 320px) {
+    h1 {
+        font-size: 1.5em;
+    }
+    .words-display {
+        font-size: 1em;
+        height: 90px;
+    }
+    .typing-input {
+        font-size: 0.9em;
+    }
+    .restart-btn {
+        font-size: 0.9em;
+    }
+}
